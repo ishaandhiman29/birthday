@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Happy Birthday 🎂</title>
+  <title>Happy Birthday Aaisha 🎂</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       text-align: center;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      background: linear-gradient(to right, #f8a5c2, #fbc2eb);
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
@@ -17,6 +17,12 @@
       color: white;
       font-size: 40px;
       margin-top: 30px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px white; }
+      to { text-shadow: 0 0 25px yellow; }
     }
 
     img {
@@ -34,35 +40,52 @@
       background-color: #ff4081;
       color: white;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     button:hover {
       background-color: #e91e63;
+      transform: scale(1.05);
+    }
+
+    #message {
+      display: none;
+      margin-top: 25px;
+      font-size: 20px;
+      color: white;
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>🎉 Happy Birthday 🎉</h1>
+  <h1>🎉 Happy Birthday Aaisha 🎉</h1>
 
-  <!-- Image -->
-  <img src="photo.png" alt="Birthday Photo">
+  <img src="photo.jpg.png" alt="Birthday Photo">
 
   <br>
 
-  <!-- Music Button -->
-  <button onclick="playMusic()">Play Music 🎵</button>
+  <button onclick="celebrate()">Play Music 🎵</button>
 
-  <!-- Audio File -->
   <audio id="bgMusic">
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="music.mp3.mp3" type="audio/mpeg">
   </audio>
 
+  <div id="message">
+    💖 Wishing you endless happiness, smiles, and love!  
+    May your day be as beautiful and special as you are! 🎂✨
+  </div>
+
   <script>
-    function playMusic() {
+    function celebrate() {
       var music = document.getElementById("bgMusic");
       music.play();
+
+      var msg = document.getElementById("message");
+      msg.style.display = "block";
     }
   </script>
 
