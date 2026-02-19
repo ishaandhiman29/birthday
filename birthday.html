@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ff9ecf,#ffc2e2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    padding:20px;
+}
+
+/* 🌸 PETALS */
+.petal{
+    position:absolute;
+    width:18px;
+    height:18px;
+    border-radius:50% 50% 50% 0;
+    opacity:0.7;
+    animation:fall linear infinite;
+    z-index:1;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* 🎀 CONTAINER */
+.container{
+    text-align:center;
+    background:white;
+    padding:25px;
+    border-radius:30px;
+    box-shadow:0 15px 50px rgba(0,0,0,0.2);
+    width:100%;
+    max-width:360px;
+    position:relative;
+    z-index:2;
+    animation:fadeIn 1.5s ease;
+}
+
+h1{
+    color:#ff1493;
+    font-size:24px;
+}
+
+.name{
+    color:#ff69b4;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.photo{
+    width:100%;
+    max-width:200px;
+    height:200px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    margin:15px auto;
+}
+
+/* 🎂 CAKE */
+.cake{
+    position:relative;
+    margin:30px auto;
+    width:170px;
+    height:160px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* Layers */
+.layer{
+    width:170px;
+    height:35px;
+    border-radius:12px;
+    position:absolute;
+    left:0;
+    box-shadow:0 8px 0 rgba(0,0,0,0.2);
+}
+
+.layer1{
+    bottom:0;
+    background:linear-gradient(#5c3317,#3b1f0f);
+}
+
+.layer2{
+    bottom:35px;
+    background:linear-gradient(#6f3e1d,#4a2a14);
+}
+
+.layer3{
+    bottom:70px;
+    background:linear-gradient(#8b4513,#5a2f17);
+}
+
+/* 🍫 Chocolate Drip */
+.drip{
+    position:absolute;
+    top:65px;
+    left:0;
+    width:170px;
+    height:25px;
+    background:#4a2a14;
+    border-radius:0 0 15px 15px;
+}
+
+.drip:before,
+.drip:after{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:30px;
+    background:#4a2a14;
+    border-radius:50%;
+    bottom:-15px;
+}
+
+.drip:before{
+    left:40px;
+}
+
+.drip:after{
+    right:40px;
+}
+
+/* Candle */
+.candle{
+    width:10px;
+    height:35px;
+    background:white;
+    position:absolute;
+    top:-35px;
+    left:80px;
+    border-radius:5px;
+}
+
+.flame{
+    width:14px;
+    height:14px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-14px;
+    left:-2px;
+    animation:flicker 0.6s infinite alternate;
+}
+
+/* Buttons */
+button{
+    margin-top:10px;
+    padding:10px 18px;
+    border:none;
+    border-radius:25px;
+    background:#ff1493;
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#message{
+    margin-top:12px;
+    color:#ff1493;
+    font-weight:bold;
+    min-height:40px;
+}
+
+/* Animations */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+@keyframes flicker{
+    from{transform:scale(1);}
+    to{transform:scale(1.4);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* 🎆 Fireworks */
+.firework{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    from{transform:scale(1); opacity:1;}
+    to{transform:scale(12); opacity:0;}
+}
+
+/* 📱 Responsive */
+@media(max-width:400px){
+    h1{font-size:20px;}
+    .name{font-size:18px;}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="music.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <div class="name">Aisha 💖</div>
+
+    <img src="photo.jpg.png" class="photo">
+
+    <div class="cake">
+        <div class="layer layer3"></div>
+        <div class="drip"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer1"></div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+    </div>
+
+    <button onclick="startTyping()">💌 Open Surprise</button>
+    <div id="message"></div>
+
+    <button onclick="fireworks()">🎆 Celebrate</button>
+</div>
+
+<script>
+
+/* 🌸 Petals */
+for(let i=0;i<30;i++){
+    let p=document.createElement("div");
+    p.className="petal";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(Math.random()*6+6)+"s";
+    p.style.background=["#ff69b4","#ffc0cb","#ffb6d9"][Math.floor(Math.random()*3)];
+    document.body.appendChild(p);
+}
+
+/* ⌨ Typing */
+let text="Happiest birthday to you💕✨ Stay happy forever  👑💗";
+let i=0;
+
+function startTyping(){
+    let message=document.getElementById("message");
+    message.innerHTML="";
+    i=0;
+    let typing=setInterval(function(){
+        if(i<text.length){
+            message.innerHTML+=text.charAt(i);
+            i++;
+        }else{
+            clearInterval(typing);
+        }
+    },40);
+}
+
+/* 🎆 Fireworks */
+function fireworks(){
+    for(let i=0;i<20;i++){
+        let f=document.createElement("div");
+        f.className="firework";
+        f.style.background=["#ff1493","#ff69b4","#ffffff","#ffd700"][Math.floor(Math.random()*4)];
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*100+"vh";
+        document.body.appendChild(f);
+        setTimeout(()=>{f.remove();},1000);
+    }
+}
+
+</script>
+
+</body>
+</html>
